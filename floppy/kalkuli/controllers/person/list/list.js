@@ -12,6 +12,12 @@ steal( 'jquery/controller','jquery/view/ejs' )
 				this.options.list.push(person);
 			},
 
+			'.colorPicker change': function (el, ev) {
+				var model = el.closest('tr').model();
+				model.attr('color', el.val());
+				model.save();
+			},
+
 			'{list} add': function (list, ev, newItems) {
 				for (var i = 0; i < newItems.length; i++) {
 					this.bind(newItems[i], 'updated', 'personUpdated');
@@ -31,18 +37,9 @@ steal( 'jquery/controller','jquery/view/ejs' )
 						person: person
 					});
 				var $row = $(row)
-				$row.kalkuli_person({person: person, parent: this});
 				$row.find('.colorPicker').colorPicker();
 				return $row;
 			}
-		});
-
-		$.Controller('Kalkuli.Controllers.Person', {
-			'.colorPicker change': function (el, ev) {
-				var model = el.closest('tr').model();
-				model.attr('color', el.val());
-				model.save();
-			},
 		});
 
 	});
