@@ -1,0 +1,6 @@
+[submodule "steal"]
+	path = steal
+	url = git@github.com:mqtthiqs/steal.git
+[submodule "jquery"]
+	path = jquery
+	url = git@github.com:mqtthiqs/jquerymx.git
