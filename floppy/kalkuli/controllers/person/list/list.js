@@ -13,11 +13,17 @@ steal( 'jquery/controller','jquery/view/ejs' )
 			},
 
 			'{list} add': function (list, ev, newItems) {
-				var widget = this;
-				$.each(newItems, function() {
-					var item = this;
-					widget.find('table').append(widget.drawPerson(item));
-				});
+				for (var i = 0; i < newItems.length; i++) {
+					this.bind(newItems[i], 'updated', 'personUpdated');
+
+					this.find('table').append(this.drawPerson(newItems[i]));
+				}
+			},
+
+			personUpdated: function (item, ev) {
+				var $newItem = this.drawPerson(item);
+				var $oldItem = item.elements(this.element);
+				$oldItem.first().replaceWith($newItem);
 			},
 
 			drawPerson: function(person) {
@@ -33,13 +39,9 @@ steal( 'jquery/controller','jquery/view/ejs' )
 
 		$.Controller('Kalkuli.Controllers.Person', {
 			'.colorPicker change': function (el, ev) {
-				el.model().attr('color', el.val());
-				el.model().save();
-				//this.options.person.attr('color', el.val()).save();
-			},
-
-			'{person} updated': function (list, ev, item) {
-				this.element.replaceWith(this.options.parent.drawPerson(this.options.person));
+				var model = el.closest('tr').model();
+				model.attr('color', el.val());
+				model.save();
 			},
 		});
 

@@ -1,6 +1,6 @@
-<tr>
+<tr <%= person %>>
 	<td>
-		<input class="colorPicker" id="color<%=person.accessKey %>" name="color<%=person.accessKey %>" value="<%= person.color %>" <%= person %>>
+		<input class="colorPicker" id="color<%=person.accessKey %>" name="color<%=person.accessKey %>" value="<%= person.color %>">
 	</td>
 	<td><div style="background-color:<%= person.color %>;"><%= person.name %></div></td>
 	<td><%= person.balance %></td>
