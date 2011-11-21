@@ -14,18 +14,29 @@ steal( 'jquery/controller',
 $.Controller('Kalkuli.User.Create',
 /** @Prototype */
 {
-	init : function(){
-		this.element.html(this.view());
-	},
-	submit : function(el, ev){
-		ev.preventDefault();
-		this.element.find('[type=submit]').val('Creating...')
-		new Kalkuli.Models.User(el.formParams()).save(this.callback('saved'));
-	},
-	saved : function(){
-		this.element.find('[type=submit]').val('Create');
-		this.element[0].reset()
-	}
+    init: function(){
+	this.user = this.options.user == undefined ?
+	    new Kalkuli.Models.User({name: "", color: "blue", balance: 0}) :
+	    this.options.user;
+	this.element.html(this.view()).find("input").focus();
+
+    },
+
+    submit: function(el, ev) {
+	ev.preventDefault();
+	this.updateUser(el.find("input"));
+    },
+
+    "input blur": function(el, ev) {
+	this.updateUser(el)
+    },
+
+    updateUser: function(el){
+	this.user
+	    .attr('name', el.serializeArray()[0].value)
+	    .save();
+    },
+
 })
 
 });

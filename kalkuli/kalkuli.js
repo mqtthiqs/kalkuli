@@ -6,6 +6,7 @@ steal(
 	'kalkuli/user/list',
 	function(){					// configure your application
 		
-		$('#users').kalkuli_user_list();
-		$('#create').kalkuli_user_create();
+	    $('#users').kalkuli_user_list();
+	    $('#create').kalkuli_user_create();
+	    $('#user_json').kalkuli_user_json();
 })
