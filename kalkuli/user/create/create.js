@@ -22,19 +22,11 @@ $.Controller('Kalkuli.User.Create',
 
     },
 
-    submit: function(el, ev) {
-	ev.preventDefault();
-	this.updateUser(el.find("input"));
-    },
-
     "input blur": function(el, ev) {
-	this.updateUser(el)
-    },
-
-    updateUser: function(el){
 	this.user
-	    .attr('name', el.serializeArray()[0].value)
+	    .attr('name', el.serializeArray()[0].value) // TODO moche. formParm()?
 	    .save();
+	this.destroy()
     },
 
 })
