@@ -23,11 +23,7 @@ $.Controller('Kalkuli.User.List',
 /** @Prototype */
 {
     init: function(){
-	var el = this.element
-	var v = this.view('init', Kalkuli.Models.User.findAll())
-	    .done(function(v) {
-		el.html(v)// .find('.color').colorPicker();
-	    });
+	this.element.html(this.view('init', Kalkuli.Models.User.findAll()))
     },
 
     ".color change": function(el) {
