@@ -27,21 +27,29 @@ $.Controller('Kalkuli.User.List',
     },
 
     ".color change": function(el) {
-	el.closest('.user').model().attr('color', el.val()).save()
+	el.closest('.user').model().attr('color', el.val()).save();
+    },
+
+    '.name change': function(el) {
+	var user_el = el.closest('.user')
+	var user = user_el.model();
+	var user_id = user.identity();
+	user.attr('name', el.html()).save(
+	    function(user) {
+		user_el.removeClass(user_id).addClass(user.identity());
+	    }
+	);
     },
 
     '.destroy click': function(el) {
 	el.closest('.user').model().destroy();
     },
 
-    '.name click': function(el) {
-	var user = el.closest('.user');
-	user.kalkuli_user_create({user: user.model()});
-    },
-
     '.add click': function(el) {
 	var user = new Kalkuli.Models.User({name: "", color: "green", balance: 0});
-	$('<li></li>').appendTo(this.element.find('ul')).kalkuli_user_create({user: user});
+	this.element.find('ul')
+	    .append(this.view('user', user))
+	    .find('.name').click()
     },
 
     "{Kalkuli.Models.User} destroyed": function(User, ev, user) {
@@ -49,6 +57,10 @@ $.Controller('Kalkuli.User.List',
     },
 
     "{Kalkuli.Models.User} created": function(User, ev, user) {
+	// TODO: a ce stade, user a un id mais il n'a pas ete
+	// repercute sur l'element du DOM. user.elements() est dc vide
+	console.log(ev);
+	console.log(user);
 	console.log(user.elements(this.element))
  	    // .html(this.view('user', user))
     },
