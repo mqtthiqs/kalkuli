@@ -2,9 +2,11 @@ steal( 'jquery/controller',
        'jquery/view/ejs',
        'jquery/lang/json',
        'jquery/controller/view',
-       'kalkuli/models' )
+        'kalkuli/models' )
     .then( './views/init.ejs',
-       './views/user.ejs',
+      './views/user.ejs',
+       'lib/js/jQuery.colorPicker.js',
+       'lib/css/colorPicker.css',
        function($){
 
 /**
@@ -20,8 +22,16 @@ $.Controller('Kalkuli.User.List',
 },
 /** @Prototype */
 {
-    init : function(){
-	this.element.html(this.view('init', Kalkuli.Models.User.findAll()) )
+    init: function(){
+	var el = this.element
+	var v = this.view('init', Kalkuli.Models.User.findAll())
+	    .done(function(v) {
+		el.html(v)// .find('.color').colorPicker();
+	    });
+    },
+
+    ".color change": function(el) {
+	el.closest('.user').model().attr('color', el.val()).save()
     },
 
     '.destroy click': function(el){
@@ -37,18 +47,18 @@ $.Controller('Kalkuli.User.List',
 	$('<li></li>').appendTo(this.element).kalkuli_user_create();
     },
 
-    "{Kalkuli.Models.User} destroyed" : function(User, ev, user) {
+    "{Kalkuli.Models.User} destroyed": function(User, ev, user) {
 	user.elements(this.element).remove();
     },
 
-    "{Kalkuli.Models.User} created" : function(User, ev, user){
-	this.init()		// TODO
+    "{Kalkuli.Models.User} created": function(User, ev, user){
+	console.log(user.elements(this.element))
+ 	    // .html(this.view('user', user))
     },
 
-    "{Kalkuli.Models.User} updated" : function(User, ev, user){
-	// user.elements(this.element)
-	//     .html(this.view('user', user) );
-	this.init()		// TODO: html ne rebinde pas les evenements
+    "{Kalkuli.Models.User} updated": function(User, ev, user){
+	user.elements(this.element)		// TODO: html ne rebinde pas les evenements
+	    .html(this.view('user', user) );
     }
 });
 
