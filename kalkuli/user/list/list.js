@@ -44,7 +44,8 @@ $.Controller('Kalkuli.User.List',
     },
 
     '.add click': function(el) {
-	$('<li></li>').appendTo(this.element.find('ul')).kalkuli_user_create();
+	var user = new Kalkuli.Models.User({name: "", color: "green", balance: 0});
+	$('<li></li>').appendTo(this.element.find('ul')).kalkuli_user_create({user: user});
     },
 
     "{Kalkuli.Models.User} destroyed": function(User, ev, user) {
@@ -61,10 +62,7 @@ $.Controller('Kalkuli.User.List',
     }
 });
 
-$.Controller('Kalkuli.User.JSON',
-{
-    defaults: {}
-},
+$.Controller('Kalkuli.User.JSON', {},
 {
     init: function() {this.update()},
     update: function() {
