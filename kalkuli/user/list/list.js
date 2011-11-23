@@ -34,7 +34,7 @@ $.Controller('Kalkuli.User.List',
 	el.closest('.user').model().attr('color', el.val()).save()
     },
 
-    '.destroy click': function(el){
+    '.destroy click': function(el) {
 	el.closest('.user').model().destroy();
     },
 
@@ -44,21 +44,20 @@ $.Controller('Kalkuli.User.List',
     },
 
     '.add click': function(el) {
-	$('<li></li>').appendTo(this.element).kalkuli_user_create();
+	$('<li></li>').appendTo(this.element.find('ul')).kalkuli_user_create();
     },
 
     "{Kalkuli.Models.User} destroyed": function(User, ev, user) {
 	user.elements(this.element).remove();
     },
 
-    "{Kalkuli.Models.User} created": function(User, ev, user){
+    "{Kalkuli.Models.User} created": function(User, ev, user) {
 	console.log(user.elements(this.element))
  	    // .html(this.view('user', user))
     },
 
-    "{Kalkuli.Models.User} updated": function(User, ev, user){
-	user.elements(this.element)		// TODO: html ne rebinde pas les evenements
-	    .html(this.view('user', user) );
+    "{Kalkuli.Models.User} updated": function(User, ev, user) {
+	user.elements(this.element).replaceWith(this.view('user', user));
     }
 });
 
