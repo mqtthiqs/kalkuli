@@ -62,6 +62,31 @@ $.Controller('Kalkuli.User.List',
     }
 });
 
+$.Controller('EditableText',
+{
+    defaults: {}
+}, {
+    click: function() {
+	this.original = this.element;
+	var input = $('<input />').val(this.original.html())
+	this.element.replaceWith(input);
+	this.element = input.focus();
+	this.bind('blur', 'blur')
+    },
+
+    blur: function() {
+	if (this.element.val() != this.original.html()) {
+	    this.original.html(this.element.val());
+	    this.element.replaceWith(this.original);
+	    this.original.change();
+	} else {
+	    this.element.replaceWith(this.original);
+	    this.element = this.original;
+	    this.bind('click', 'click')
+	}
+    }
+})
+
 $.Controller('Kalkuli.User.JSON', {},
 {
     init: function() {this.update()},
