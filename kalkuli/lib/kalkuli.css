@@ -1,0 +1,69 @@
+body {
+	font-family: "Helvetica", "Arial", "sans-serif";
+	color: #333;
+	margin: 0;
+	padding: 0;
+}
+
+a:link {text-decoration: none; color: #0F858B}
+a:visited {text-decoration: none; color: #255A5D}
+a:hover {text-decoration: underline;}
+a:active {}
+
+#header {
+	background-image: url(../img/grad-head.png);
+	background-position: bottom;
+	background-repeat: repeat-x;
+    background-color: #03474B;
+	color: white;
+	padding: 0.5ex 1ex 1ex 1ex;
+}
+#header a:link {color: inherit;}
+#header a:visited {color: inherit;}
+#header a:hover {color: inherit;}
+#header a:active {}
+
+#content {
+	margin: 2em;
+	margin-left: 10%;
+	margin-right: 2%;
+}
+
+#margin-left {
+	font-size: small;
+	float: left;
+	width: 30%;
+}
+
+#main {
+	margin-left: 5ex;
+	float: left;
+	width : 63%;
+}
+
+#footer {
+	clear: both;
+	margin: 0;
+	padding: 0.5em 2em;
+	font-size: small;
+	background-color: #03474B;
+	color: lightgrey;
+	margin-top: 2em;
+}
+
+#logo {margin-top: 1em}
+
+#login {
+	float: right;
+	font-size: small;
+	text-shadow: 1px 1px 0px black;
+}
+
+.clear {clear: both;}
+.left {float: left;}
+.right {float: right;}
+
+.shadow1 {padding: 0 0 1px 0; background-color: #E8E8E8;}
+.shadow2 {padding: 0 0 1px 0; background-color: #D8D8D8;}
+.shadow3 {padding: 0 0 1px 0; background-color: #C8C8C8;}
+.shadow4 {padding: 0 0 1px 0; background-color: #B8B8B8;}

@@ -1,7 +1,3 @@
-<h3>Users (<a href="javascript://" class="add">add</a>) </h3>
-
-<ul>
-  <% for(var i = 0; i < this.length ; i++) { %>
-     <%== $.View('//kalkuli/user/list/views/user.ejs', this[i]) %>
-  <% } %>
-</ul>
+<% for(var i = 0; i < this.length ; i++) { %>
+   <%== $.View('//kalkuli/user/list/views/user.ejs', this[i]) %>
+<% } %>

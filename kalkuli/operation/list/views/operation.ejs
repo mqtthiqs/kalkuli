@@ -1,0 +1,12 @@
+<tr>
+  <td><%= date.toLocaleFormat() %></td>
+  <td><%= name %></td>
+  <td>
+    <%for(var i = 0; i < paid.length ; i++){%>
+              <span <%= paid[i] %> class="rounded c1">
+                <%= paid[i] %>
+              </span>
+    <%}%>
+  </td>
+  <td class="amount"><%= amount %>&nbsp;€</td>
+</tr>

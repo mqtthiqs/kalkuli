@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+            "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+	<head>
+		<title>Kalkuli.Operation.Create</title>
+        <style type='text/css'>
+            body {font-family: verdana}
+        </style>
+	</head>
+	<body>
+	    <h1>Kalkuli.Operation.Create Demo</h1>
+		<form id='create' action=''></form>
+		<div id='operations'></div>
+		<script type='text/javascript' 
+                src='../../../steal/steal.js'>
+        </script>
+		<script type='text/javascript'>
+			steal('kalkuli/operation/create','kalkuli/fixtures',function(){
+				
+				$('#create').kalkuli_operation_create();
+				Kalkuli.Models.Operation.bind('created', function(ev, operation){
+					$('<div>').html("<h3>"+operation.name+"</h3><p>"+operation.description+"</p>")
+					        .appendTo( $('#operations') )
+				})
+				
+			})
+		</script>
+	</body>
+</html>

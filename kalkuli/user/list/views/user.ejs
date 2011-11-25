@@ -1,8 +1,8 @@
-<li <%= this %>>
-  <input <%= plugin('colorPicker') %> class="color" value="<%= color %>" />
-  <span <%= EditableText %>
-        class="name"
-        style="background-color: <%= color %>"><%= name %></span>
-  <%= balance %>
-  <a href='javascript://' class="destroy">X</a>
+<li <%= this %> class="rounded" style="background-color: <%= color %>">
+  <table><tr>
+      <td><input <%= plugin('colorPicker') %> class="color" value="<%= color %>" /></td>
+      <td><a href='javascript://' class="destroy">X</a></td>
+      <td style="width: 100%"><span <%= EditableText %> class="name"><%= name %></span></td>
+      <td><span class="balance"><%= balance %>&nbsp;€</span></td>
+  </tr></table>
 </li>

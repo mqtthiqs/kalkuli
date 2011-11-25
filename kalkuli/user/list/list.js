@@ -24,6 +24,7 @@ $.Controller('Kalkuli.User.List',
 {
     init: function(){
 	this.element.html(this.view('init', Kalkuli.Models.User.findAll()))
+	$("td", this.element).css('padding: 0')
     },
 
     ".color change": function(el) {
@@ -45,9 +46,11 @@ $.Controller('Kalkuli.User.List',
 	el.closest('.user').model().destroy();
     },
 
-    '.add click': function(el) {
+    '{add} click': function(el) {
 	var user = new Kalkuli.Models.User({name: "", color: "green", balance: 0});
-	this.element.find('ul')
+	console.log(this.element);
+	console.log(this.view('user', user))
+	this.element
 	    .append(this.view('user', user))
 	    .find('.name').click()
     },
@@ -77,6 +80,7 @@ $.Controller('EditableText',
     click: function() {
 	this.original = this.element;
 	var input = $('<input />').val(this.original.html())
+	    .attr('class', this.original.attr('class'))
 	this.element.replaceWith(input);
 	this.element = input.focus();
 	this.bind('blur', 'blur')

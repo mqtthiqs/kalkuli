@@ -1,13 +1,52 @@
-<!DOCTYPE HTML>
-<html lang="en">
-  <head>
-    <title>kalkuli</title>
-  </head>
-  <body>
-    <h1>Kalkuli</h1>
-    <textarea style="float: right" id="user_json" rows="20" cols="70"></textarea>
-    <div id="users"></div>
-    <script type='text/javascript'
-    src='../steal/steal.js?kalkuli'></script>
-  </body>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Vacances avril 2010 - kal.ku.li</title>
+    </head>
+    <body>
+        <div id="header" class="shadow">
+            <div id="login">
+                <a href=#>matthias.puech@gmail.com</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href=#>logout</a>
+            </div>
+            <div id="logo">
+                <img src="img/logo-kalkuli.png" alt="/kal.'ku.li/" />
+            </div>
+        </div>
+        <div id="content">
+            <div id="margin-left">
+                <h3>Users<a id="user_add" class="modify" href="javascript://">[add]</a></h3>
+                <ul id="users"></ul>
+                <h3>History</h3>
+                <table id="history" class="rounded">
+                    <tr>
+                        <td>Added user Matthias</td>
+                    </tr>
+                    <tr>
+                        <td>Modified operation “Bouffe au resto le 20/04”</td>
+                    </tr>
+                    <tr>
+                        <td>Added operation “Location skis et luges”</td>
+                    </tr>
+                    <tr>
+                        <td>Added operation “Bouffe au resto le 20/04”</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="main">
+                <h1>
+                    Vacances avril 2010
+                </h1>
+                <p id="url">
+                    URL of this sheet: <a href=#>http://kal.ku.li/38s8897sjcb1/</a>
+                </p>
+                <h3>Operations<a class="modify" href="#">[add]</a></h3>
+                <table id="operations" class="rounded"></table>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div id="footer"><textarea id="user_json"rows=10 cols=80></textarea></div>
+        <script type='text/javascript'
+                src='../steal/steal.js?kalkuli'></script>
+    </body>
 </html>

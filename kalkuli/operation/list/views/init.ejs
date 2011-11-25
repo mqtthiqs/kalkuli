@@ -1,0 +1,12 @@
+<tr>
+  <th>Date</th>
+  <th>Operation</th>
+  <th>Paid</th>
+  <th>Amount</th>
+</tr>
+
+<%for(var i = 0; i < this.length ; i++){%>
+	<li <%= this[i]%>>
+		<%== $.View('//kalkuli/operation/list/views/operation.ejs', this[i] )%>
+	</li>
+<%}%>

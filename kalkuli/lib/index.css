@@ -1,0 +1,43 @@
+
+#content {
+	margin: 3em 20%;
+}
+
+#intro {
+	background-color: #89D4D7;
+/*	background-image: url(../img/grad-intro.png);
+	background-repeat: repeat-x;
+	background-position: bottom; */
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px; 
+	padding: 1em 2em;
+}
+
+#create {
+	margin: 1.5em;
+	text-align: center; 
+}
+
+table#infos{
+	border-spacing: 1em 0; 
+}
+
+#intro>img {
+	float: left;
+	width: 250px;
+	margin-top: -2em;
+	margin-left: -4em;
+}
+
+.info {
+	background-color: #F6DC9C;
+/*	background-image: url(../img/grad-info.png);
+	background-repeat: repeat-x;
+	background-position: top; */
+	padding: 1em 1em;
+	vertical-align: top;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px; 
+}
