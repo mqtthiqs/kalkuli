@@ -18,12 +18,8 @@ steal("jquery/dom/fixture", function(){
 
     var users_id = users.map(function(u) {return u.id})
 
-    // $.fixture.make("user", 5, function(i, user) {
-    // 	return users[1]
-    // })
-
-    $.fixture("/users.json", function() {
-	return [users]
+    $.fixture.make("user", users.length, function(i, user) {
+    	return users[i]
     })
 
     $.fixture.make("operation", 7, function(i, operation){
