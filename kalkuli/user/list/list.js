@@ -73,29 +73,25 @@ $.Controller('Kalkuli.User.List',
     }
 });
 
-$.Controller('EditableText',
+$.Controller('EditableText', {},
 {
-    defaults: {}
-}, {
-    click: function() {
-	this.original = this.element;
-	var input = $('<input />').val(this.original.html())
-	    .attr('class', this.original.attr('class'))
-	this.element.replaceWith(input);
-	this.element = input.focus();
-	this.bind('blur', 'blur')
+    "click": function() {
+	if(this.element.find('input').length) return;
+	this.original = this.element.text();
+        var input = $('<input />')
+	    .val(this.element.text())
+	this.element.html(input);
+	input.focus();
     },
 
-    blur: function() {
-	if (this.element.val() != this.original.html()) {
-	    this.original.html(this.element.val());
-	    this.element.replaceWith(this.original);
-	    this.original.change();
-	} else {
-	    this.element.replaceWith(this.original);
-	    this.element = this.original;
-	    this.bind('click', 'click')
-	}
+    "input change": function(ev) {
+	return false;
+    },
+
+    "input blur": function(el, ev) {
+	this.element.text(el.val());
+	if (this.original != el.val())
+	    this.element.change();
     }
 })
 
