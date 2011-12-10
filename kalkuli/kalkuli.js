@@ -4,6 +4,7 @@ steal(
     './models/models.js',		// steals all your models
     './fixtures/fixtures.js',	// sets up fixtures for your models
     'kalkuli/user/list',
+	'kalkuli/user/create',
 	'kalkuli/operation/create',
 	'kalkuli/operation/list',
 	function(){					// configure your application
