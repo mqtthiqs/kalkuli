@@ -11,11 +11,12 @@ $.Model('Kalkuli.Models.User',
 {
 	findAll: "/users.json",
   	findOne : "/users/{id}.json", 
-  	// create : function(attrs, success, error) {
-	// 	attrs.id = Math.round(Math.random() * 1000000);
-	// 	$.ajax('/user/create.json');
-	// 	success && success(attrs);
-	// },
+  	create : function(attrs, success, error) {
+	    attrs.id = Math.round(Math.random() * 1000000);
+	    attrs.balance = 0;
+	    $.ajax('/user/create.json');
+	    success && success(attrs);
+	},
  	// update : function(id, params, success, error) {
 	// 	$.ajax('/user/' + id + '/update.json');
 	// 	success && success();

@@ -15,17 +15,28 @@ $.Controller('Kalkuli.User.Create',
 /** @Prototype */
 {
     init: function(){
-	this.element.html(this.view()).find("input").focus();
-
+	this.element.html(this.view('init'))
+	    .find('[name=name]').focus();
     },
 
-    "input blur": function(el, ev) {
-	this.options.user
-	    .attr('name', el.serializeArray()[0].value) // TODO moche. formParm()?
-	    .save();
-	this.destroy()
+    click: function(el, ev){
+	ev.stopPropagation();
     },
 
+    "{window} click": function(){
+	this.destroy();
+    },
+
+    submit: function(el, ev) {
+	ev.preventDefault();
+	new Kalkuli.Models.User(el.formParams()).save();
+	this.destroy();
+    },
+
+    destroy: function() {
+	this.element.empty();
+	this._super();
+    },
 })
 
 });

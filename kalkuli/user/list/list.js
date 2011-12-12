@@ -24,7 +24,12 @@ $.Controller('Kalkuli.User.List',
 {
     init: function(){
 	this.element.html(this.view('init', Kalkuli.Models.User.findAll()))
-	$("td", this.element).css('padding: 0')
+    },
+
+    "{button} click": function(){
+	$('#user_create').kalkuli_user_create();
+	// ne pas propager a destroy
+	return false;
     },
 
     ".color change": function(el) {
@@ -32,27 +37,11 @@ $.Controller('Kalkuli.User.List',
     },
 
     '.name change': function(el) {
-	var user_el = el.closest('.user')
-	var user = user_el.model();
-	var user_id = user.identity();
-	user.attr('name', el.html()).save(
-	    function(user) {
-		user_el.removeClass(user_id).addClass(user.identity());
-	    }
-	);
+	el.closest('.user').model().attr('name', el.text()).save();
     },
 
     '.destroy click': function(el) {
 	el.closest('.user').model().destroy();
-    },
-
-    '{add} click': function(el) {
-	var user = new Kalkuli.Models.User({name: "", color: "green", balance: 0});
-	console.log(this.element);
-	console.log(this.view('user', user))
-	this.element
-	    .append(this.view('user', user))
-	    .find('.name').click()
     },
 
     "{Kalkuli.Models.User} destroyed": function(User, ev, user) {
@@ -60,12 +49,7 @@ $.Controller('Kalkuli.User.List',
     },
 
     "{Kalkuli.Models.User} created": function(User, ev, user) {
-	// TODO: a ce stade, user a un id mais il n'a pas ete
-	// repercute sur l'element du DOM. user.elements() est dc vide
-	console.log(ev);
-	console.log(user);
-	console.log(user.elements(this.element))
- 	    // .html(this.view('user', user))
+	this.element.append(this.view('user', user))
     },
 
     "{Kalkuli.Models.User} updated": function(User, ev, user) {

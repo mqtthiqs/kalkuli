@@ -9,7 +9,7 @@ steal(
 	'kalkuli/operation/list',
 	function(){					// configure your application
 
-	    $('#users').kalkuli_user_list({add: $('#user_add')});
+	    $('#users').kalkuli_user_list({button: $('#user_create_button')});
 	    $('#user_json').kalkuli_user_json();
 	    $('#operations').kalkuli_operation_list();
 	    $('#operation_create').kalkuli_operation_create();
