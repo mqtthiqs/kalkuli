@@ -1,1 +1,0 @@
-steal("funcunit/qunit", "./kalkuli_test.js", './person_test.js');
