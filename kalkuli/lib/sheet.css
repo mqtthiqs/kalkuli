@@ -41,23 +41,12 @@ input.transp-input, textarea.transp-textarea {
 	background-color: inherit;
 }
 
-#user-color-selector {
-	background-color: #DDD;
-	border: 1px solid #BBB;
-	position: absolute;
-	top: 30%;
-	left: 1%;
-	width: 72px;
-	height: 72px;
+#user_create table {
+    width: 100%;
 }
 
-.user-color-box {
-	margin: 1px;
-	padding: 0;
-	float: left;
-	width: 14px;
-	height: 14px;
-	border: 1px solid black;
+table input {
+    width: 90%;
 }
 
 .rounded {
@@ -110,3 +99,4 @@ a.modify {
 
 #operations td .rounded {display: inline-block;}
 #operations .amount {font-weight: bold; text-align: right;}
+
