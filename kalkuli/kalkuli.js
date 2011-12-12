@@ -1,16 +1,19 @@
 steal(
     './lib/kalkuli.css',
     './lib/sheet.css',
-    './models/models.js',		// steals all your models
-    './fixtures/fixtures.js',	// sets up fixtures for your models
+    './models/models.js',
+    './fixtures/fixtures.js',
+    'lib/dumpJSON',
     'kalkuli/user/list',
-	'kalkuli/user/create',
-	'kalkuli/operation/create',
-	'kalkuli/operation/list',
-	function(){					// configure your application
+    'kalkuli/operation/create',
+    'kalkuli/operation/list',
+	function(){
 
 	    $('#users').kalkuli_user_list({button: $('#user_create_button')});
-	    $('#user_json').kalkuli_user_json();
 	    $('#operations').kalkuli_operation_list();
 	    $('#operation_create').kalkuli_operation_create();
+
+	    // Debug
+	    $('#user_json').dump_json({model: Kalkuli.Models.User});
+
 })

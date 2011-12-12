@@ -2,6 +2,7 @@ steal( 'jquery/controller',
        'jquery/view/ejs',
        'jquery/lang/json',
        'jquery/controller/view',
+       'lib/editableText',
         'kalkuli/models' )
     .then( './views/init.ejs',
       './views/user.ejs',
@@ -57,42 +58,4 @@ $.Controller('Kalkuli.User.List',
     }
 });
 
-$.Controller('EditableText', {},
-{
-    "click": function() {
-	if(this.element.find('input').length) return;
-	this.original = this.element.text();
-        var input = $('<input />')
-	    .val(this.element.text())
-	this.element.html(input);
-	input.focus();
-    },
-
-    "input change": function(ev) {
-	return false;
-    },
-
-    "input blur": function(el, ev) {
-	this.element.text(el.val());
-	if (this.original != el.val())
-	    this.element.change();
-    }
 })
-
-$.Controller('Kalkuli.User.JSON', {},
-{
-    init: function() {this.update()},
-    update: function() {
-	el = this.element;
-	Kalkuli.Models.User.findAll({}, function(l){
-	    el.html($.toJSON(l));
-	})
-
-    },
-
-    '{Kalkuli.Models.User} destroyed': function(){this.update()},
-    '{Kalkuli.Models.User} created': function(){this.update()},
-    '{Kalkuli.Models.User} updated': function(){this.update()},
-}
-)
-});
