@@ -64,7 +64,7 @@ a:active {}
 .right {float: right;}
 
 .shadow {
-  -moz-box-shadow: 5px 5px 5px #ccc;
-  -webkit-box-shadow: 5px 5px 5px #ccc;
-  box-shadow: 5px 5px 5px #ccc;
+  -moz-box-shadow: 3px 3px 3px #555;
+  -webkit-box-shadow: 3px 3px 3px #555;
+  box-shadow: 3px 3px 3px #555;
 }
