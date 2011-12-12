@@ -1,14 +1,13 @@
 steal( 'jquery/controller',
-       'jquery/view/ejs',
-       'jquery/lang/json',
        'jquery/controller/view',
+       'jquery/view/ejs',
        'lib/editableText',
-        'kalkuli/models' )
+       'lib/colorPicker',
+       'kalkuli/user/create',
+       'kalkuli/models' )
     .then( './views/init.ejs',
-      './views/user.ejs',
-       'lib/js/jQuery.colorPicker.js',
-       'lib/css/colorPicker.css',
-       function($){
+	   './views/user.ejs',
+	   function($){
 
 /**
  * @class Kalkuli.User.List
