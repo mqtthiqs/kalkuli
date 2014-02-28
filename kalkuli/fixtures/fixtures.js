@@ -1,8 +1,9 @@
 // map fixtures for this application
 
-steal("jquery/dom/fixture", function(){
+steal("jquery/dom/fixture", "lib/colorPicker", function(){
 
     var gen_color = function() {
+	// return ColorSwatch[2]
     	var r = Math.round(Math.random() * 200 + 55);
     	var g = Math.round(Math.random() * 200 + 55);
     	var b = Math.round(Math.random() * 200 + 55);
@@ -20,6 +21,10 @@ steal("jquery/dom/fixture", function(){
 
     $.fixture.make("user", users.length, function(i, user) {
     	return users[i]
+    })
+
+    $.fixture("/user/create.json", function(orig, settings, headers){
+	return [200, "success", {json: {foo: "bar" } }, {} ]
     })
 
     $.fixture.make("operation", 7, function(i, operation){

@@ -10,12 +10,12 @@ $.Model('Kalkuli.Models.User',
 /* @Static */
 {
 	findAll: "/users.json",
-  	findOne : "/users/{id}.json", 
+  	findOne : "/users/{id}.json",
   	create : function(attrs, success, error) {
 	    attrs.id = Math.round(Math.random() * 1000000);
-	    attrs.balance = 0;
-	    $.ajax('/user/create.json');
-	    success && success(attrs);
+ 	    attrs.balance = 0;
+	    $.ajax('/user/create.json', success);
+	    // success && success(attrs);
 	},
  	// update : function(id, params, success, error) {
 	// 	$.ajax('/user/' + id + '/update.json');
